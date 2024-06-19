@@ -23,8 +23,11 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
         await user.save();
 
         sendTokenResponse(user, 200, res);
-    } catch (err) {
-        next(err);
+    }  catch (err) {
+        if (err instanceof Error) {
+            return next(new ErrorResponse(err.message, 500));
+        }
+        return next(err);
     }
 };
 
@@ -56,7 +59,10 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
         // Send token response
         sendTokenResponse(user, 200, res);
     } catch (err) {
-        next(err);
+        if (err instanceof Error) {
+            return next(new ErrorResponse(err.message, 401));
+        }
+        return next(err);
     }
 };
 
