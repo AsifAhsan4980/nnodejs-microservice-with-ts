@@ -1,8 +1,8 @@
 import request, { Response } from 'supertest';
-import app from '../app';
+import app from '../src/app';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import connectDB from '../config/db';
+import connectDB from '../src/config/db';
 
 dotenv.config({ path: '../env' });
 

@@ -109,12 +109,7 @@
     "jsx": "preserve",
     "moduleResolution": "node",
     "baseUrl": "./",
-    "paths": {
-      "*": [
-        "node_modules/*",
-        "src/types/*"
-      ]
-    }
+
   },
   "include": ["src/**/*", "__tests__/**/*"],
   "exclude": ["node_modules"]
