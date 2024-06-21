@@ -1,8 +1,8 @@
 import request, { Response } from 'supertest';
-import app from '../src/app';
+import app from '../app';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import connectDB from '../src/config/db';
+import connectDB from '../config/db';
 
 dotenv.config({ path: '../env' });
 
@@ -50,8 +50,9 @@ describe('Auth - login - /auth/login', () => {
         console.log(body, status);
 
         if (status === 200) {
-            expect(body).toHaveProperty('email');
+            expect(body).toHaveProperty('success');
             expect(body).toHaveProperty('token');
+            expect(body).toHaveProperty('user');
             expect(status).toBe(200);
         } else {
             expect(body).toHaveProperty('message');

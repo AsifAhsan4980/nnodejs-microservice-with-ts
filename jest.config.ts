@@ -7,7 +7,8 @@ export default {
     preset: 'ts-jest',
     testEnvironment: 'node',
     setupFiles: ['dotenv/config'],
-    roots: ['<rootDir>/src', '<rootDir>/test'],
+    // roots: ['<rootDir>/src', '<rootDir>/src/test'],
+    rootDir: './src/test/',
     globals: {
         'ts-jest': {
             tsconfig: 'tsconfig.json',
@@ -16,7 +17,7 @@ export default {
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/src/$1',
     },
-    testMatch: ['**/__tests__/**/*.test.ts'],
+    // testMatch: ['**/__tests__/**/*.test.ts'],
     collectCoverage: true,
     coverageDirectory: 'coverage',
     coverageReporters: ['lcov', 'text', 'html'],
