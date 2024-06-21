@@ -28,7 +28,9 @@ describe('Auth - register - /auth/register', () => {
         console.log(body, status);
 
         if (status === 200) {
-            expect(body).toHaveProperty('email');
+            expect(body).toHaveProperty('success');
+            expect(body).toHaveProperty('token');
+            expect(body).toHaveProperty('user');
             expect(status).toBe(200);
         } else {
             expect(body).toHaveProperty('message');
@@ -54,8 +56,13 @@ describe('Auth - login - /auth/login', () => {
             expect(body).toHaveProperty('token');
             expect(body).toHaveProperty('user');
             expect(status).toBe(200);
+        } else if (status === 401) {
+            expect(body).toHaveProperty('success');
+            expect(body).toHaveProperty('error');
+            expect(status).toBe(401);
         } else {
             expect(body).toHaveProperty('message');
+            expect(body).toHaveProperty('error');
             expect(status).toBe(400);
         }
     }, 10000);
