@@ -9,11 +9,11 @@ export default {
     setupFiles: ['dotenv/config'],
     // roots: ['<rootDir>/src', '<rootDir>/src/test'],
     rootDir: './src/test/',
-    globals: {
-        'ts-jest': {
-            tsconfig: 'tsconfig.json',
-        },
-    },
+    // globals: {
+    //     'ts-jest': {
+    //         tsconfig: 'tsconfig.json',
+    //     },
+    // },
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/src/$1',
     },
@@ -21,6 +21,15 @@ export default {
     collectCoverage: true,
     coverageDirectory: 'coverage',
     coverageReporters: ['lcov', 'text', 'html'],
+    transform: {
+        '^.+\\.tsx?$': ['ts-jest', {
+            tsconfig: 'tsconfig.json', // Adjust this if your tsconfig file is named differently or located elsewhere
+            // You can add other ts-jest specific configurations here
+        }],
+    },
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    // Automatically clear mock calls, instances, contexts and results before every test
+    clearMocks: true,
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
@@ -30,8 +39,7 @@ export default {
     // The directory where Jest should store its cached dependency information
     // cacheDirectory: "C:\\Users\\asif6\\AppData\\Local\\Temp\\jest",
 
-    // Automatically clear mock calls, instances, contexts and results before every test
-    clearMocks: true,
+
 
     // Indicates whether the coverage information should be collected while executing the tes
 
